@@ -57,3 +57,20 @@ update staff set store_id = 2 where store_id = 1;
 =
 update film set rating = 'PG' where title like '%LOVE%';
 =
+
+/*=====================delete
+Delete all payments where amount = 0.00.
+Remove all customers who have never made a payment.
+Delete all films with a rental duration of 0 (if any).
+Delete all addresses not linked to any staff, customer, or store.
+Delete the Artificial Intelligence category (after unlinking all films from it). */
+
+delete from payment where amount = 0.00;
+=
+?
+=
+delete from film where rental_duration = 0;
+=
+?
+=
+chala insertni 7 si bilan bog`lash kerak.
