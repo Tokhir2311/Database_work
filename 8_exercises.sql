@@ -151,8 +151,14 @@ select c.first_name, c.last_name, s.store_id from customer as c join store as s 
 Business Scenarios
 
     Identify the top 5 customers by total spending.
+select c.first_name, c.last_name, sum(p.amount) as " sarflagan puli usd " from customer as c join payment as p on c.customer_id=p.customer_id group by c.first_name, c.last_name, p.amount order by sum(p.amount) desc limit 5;
+
     Find the most profitable film category.
+--------------------------------------------------------------------
+
     List staff members with their total processed payment amounts.
+select s.first_name, sum(p.amount) from staff as s inner join payment as p on s.staff_id=p.staff_id group by s.staff_id, s.first_name;
+
     Show films that are consistently rented every month.
     Find customers who have not rented in the last 6 months.
 
