@@ -49,3 +49,17 @@ select customer_id from rental union select customer_id from payment ;
 --
 
 select customer_id from payment except select customer_id from rental;
+
+
+--================================================================================
+
+
+select first_name from staff union select first_name from customer;
+
+select store_id from staff except select store_id from inventory;
+
+select name from language where language_id in (select language_id from film intersect select language_id from language);
+
+-- ? select title from film where film_id in (select inventory_id from inventory except select inventory_id from rental); 
+
+-- ? select first_name, last_name from actor where actor_id in (select actor_id from film_actor where film_id in ( select title from film where film_id in (select inventory_id from inventory except select inventory_id from rental)));  
