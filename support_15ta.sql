@@ -53,3 +53,4 @@ select count(first_name), active from customer group by active;
 
 --=====================================================ADvanced
 
+select * from 
