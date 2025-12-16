@@ -41,9 +41,11 @@ select f.title, l.name from film as f full join language as l on f.language_id=l
 
 --middle 5 
 
---middle 6 select length, rental_rate from film order by length, rental_rate;
+--middle 6 
+select length, rental_rate from film order by length, rental_rate asc;
 
 --middle 7 
+select length, rental_rate from film order by length, rental_rate desc;
 
 select film_id from inventory order by film_id desc;
 
@@ -51,6 +53,24 @@ select avg(rental_rate) as ren_avg, min(rental_rate) as ren_mn, max(rental_rate)
 
 select count(first_name), active from customer group by active;
 
+select count(customer_id) from customer where active = 1 group by active;
+
+--Middle dagi qolgan 4 ta savol(12, 13, 14, 15) basic dagi(6, 11, 12, 13) bilan bir xil ekan()
+
+
 --=====================================================ADvanced
 
-select * from 
+select staff_id from rental intersect select staff_id from payment; 
+
+select title from film where film_id in (select inventory_id from inventory except select inventory from rental)
+
+select language_id from language union select language_id from film;
+
+select length, rental_rate from film where length > 120 and rental_rate < 2 group by length, rental_rate;
+
+--??-select desc length, asc rental_rate from film ;
+--??-select length from film order by length desc union select rental_rate from film order by rental_rate asc;
+
+select customer_id, round(avg(amount), 3) as avg, count(amount) from payment group by customer_id;
+
+select r.customer_id, py.avg(amount), py.count(amount) from rental as r join payment as py on r.customer_id=py.customer_id group by customer_id;
